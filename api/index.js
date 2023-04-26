@@ -19,9 +19,15 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
+const { getDietsFromApi } = require('./src/controllers/dietsControllers.js');
+const { Diet } = require('./src/db.js');
 
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
+conn.sync({ alter: true }).then(async () => {
+  const diets = await Diet.findAll(); 
+  if (diets.length === 0) { // verifica si la tabla diet esta vacia, la llena
+    await getDietsFromApi();
+  }
   server.listen(3001, () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
