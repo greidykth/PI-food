@@ -23,16 +23,12 @@ const getRecipesFromApi = async () => {
       id: recipe.id,
       name: recipe.title,
       image: recipe.image,
-      diets: [
-        ...recipe.diets,
-        recipe.vegetarian && !recipe.diets.includes("vegetarian")
-          ? "vegetarian"
-          : null,
-        recipe.vegan && !recipe.diets.includes("vegan") ? "vegan" : null,
-        recipe.glutenFree && !recipe.diets.includes("gluten free")
-          ? "gluten free"
-          : null,
-      ].filter((diet) => diet != null),
+      diets: setDietsApi(
+        recipe.diets,
+        recipe.vegetarian,
+        recipe.vegan,
+        recipe.glutenFree
+      ),
     };
   });
 
@@ -55,7 +51,9 @@ const getRecipesByName = async (name) => {
 
   let recipesApi = await getRecipesFromApi();
 
-  recipesApi = recipesApi.filter((recipe) => recipe.name.toLowerCase().includes(name.toLowerCase()));
+  recipesApi = recipesApi.filter((recipe) =>
+    recipe.name.toLowerCase().includes(name.toLowerCase())
+  );
 
   const recipesDb = await Recipe.findAll({
     where: {
@@ -93,16 +91,14 @@ const getRecipeById = async (idRecipe) => {
         image: result.data.image,
         summary: result.data.summary,
         healthScore: result.data.healthScore,
-        diets: [...result.data.diets],
+        diets: setDietsApi(
+          result.data.diets,
+          result.data.vegetarian,
+          result.data.vegan,
+          result.data.glutenFree
+        ),
         procedure: result.data.instructions,
       };
-
-      if (result.data.vegetarian && !result.data.diets.includes("vegetarian"))
-        recipe.diets.push("vegetarian");
-      if (result.data.vegan && !result.data.diets.includes("vegan"))
-        recipe.diets.push("vegan");
-      if (result.data.glutenFree && !result.data.diets.includes("gluten free"))
-        recipe.diets.push("gluten free");
     }
   } else {
     //Buscar id en base de datos
@@ -116,6 +112,21 @@ const getRecipeById = async (idRecipe) => {
   }
 
   return recipe;
+};
+
+const setDietsApi = (diets, vegetarian, vegan, glutenFree) => {
+  let dietsRecipe = [...diets];
+
+  if (vegetarian && !diets.includes("vegetarian"))
+    dietsRecipe.push("vegetarian");
+
+  if (vegan && !diets.includes("vegan"))
+    dietsRecipe.push("vegan");
+
+  if (glutenFree && !diets.includes("gluten free"))
+    dietsRecipe.push("gluten free");
+
+  return dietsRecipe;
 };
 
 const createRecipe = async (
