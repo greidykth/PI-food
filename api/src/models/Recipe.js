@@ -17,7 +17,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    dishSummary: {
+    summary: {
       type: DataTypes.TEXT,
       allowNull: false
     },
@@ -29,7 +29,17 @@ module.exports = (sequelize) => {
       type: DataTypes.TEXT,
       allowNull: false
     }
-  });
+  },
+  {
+    getterMethods: {
+      async allDiets() {
+        const recipe = this.toJSON();
+        const diets = await this.getDiets();
+        recipe.diets = diets.map((diet) => diet.name);
+        return recipe;
+      },
+    }}
+  )
 };
 
 
