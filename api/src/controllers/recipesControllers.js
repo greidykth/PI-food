@@ -13,7 +13,7 @@ const getRecipes = async () => {
 };
 
 const getRecipesFromApi = async () => {
-  const numberResults = 10;
+  const numberResults = 1;
   const results = await axios.get(
     `${URL_GET_RECIPES}?apiKey=${API_KEY}&addRecipeInformation=true&number=${numberResults}`
 );
@@ -38,6 +38,7 @@ const getRecipesFromApi = async () => {
 const getRecipesFromDb = async () => {
   const recipesDb = await Recipe.findAll({
     attributes: ["id", "name", "image"],
+    order: [["createdAt", "DESC"]],
   });
 
   const recipesDbWithDiets = await Promise.all(
