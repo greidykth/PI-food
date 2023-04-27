@@ -26,8 +26,8 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     procedure: {
-      type: DataTypes.TEXT,
-      allowNull: false
+      type: DataTypes.ARRAY(DataTypes.JSON),
+    allowNull: false,
     }
   },
   {
