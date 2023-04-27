@@ -16,7 +16,7 @@ const getRecipesFromApi = async () => {
   const numberResults = 10;
   const results = await axios.get(
     `${URL_GET_RECIPES}?apiKey=${API_KEY}&addRecipeInformation=true&number=${numberResults}`
-  );
+);
 
   const recipesApi = results.data.results.map((recipe) => {
     return {
@@ -97,7 +97,10 @@ const getRecipeById = async (idRecipe) => {
           result.data.vegan,
           result.data.glutenFree
         ),
-        procedure: result.data.instructions,
+        procedure: result.data.analyzedInstructions[0].steps.map((step) => ({
+          number: step.number,
+          step: step.step,
+        })),
       };
     }
   } else {
@@ -120,8 +123,7 @@ const setDietsApi = (diets, vegetarian, vegan, glutenFree) => {
   if (vegetarian && !diets.includes("vegetarian"))
     dietsRecipe.push("vegetarian");
 
-  if (vegan && !diets.includes("vegan"))
-    dietsRecipe.push("vegan");
+  if (vegan && !diets.includes("vegan")) dietsRecipe.push("vegan");
 
   if (glutenFree && !diets.includes("gluten free"))
     dietsRecipe.push("gluten free");
@@ -157,4 +159,5 @@ module.exports = {
   getRecipeById,
   createRecipe,
   getRecipesByName,
+  getRecipesFromApi,
 };
