@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const { getRecipes, getRecipeById, createRecipe, getRecipesByName } = require("../controllers/recipesControllers");
-const { STATUS_OK, STATUS_BAD_REQUEST } = require("../utils/const_status");
+const { STATUS_OK, STATUS_BAD_REQUEST, STATUS_CREATED } = require("../utils/const_status");
 
 
 const recipesRoutes = Router();
@@ -43,7 +43,7 @@ recipesRoutes.post("/", async (req, res) => {
 
   try {
     const newRecipe = await createRecipe(name, image, summary, healthScore, procedure, diets)
-    res.status(STATUS_OK).json(newRecipe);
+    res.status(STATUS_CREATED).json(newRecipe);
   } catch (error) {
     res.status(STATUS_BAD_REQUEST).json({ error: error.message });
   }
