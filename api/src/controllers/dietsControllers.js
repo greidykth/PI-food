@@ -32,5 +32,4 @@ const storeDiets = async (diets) => {
 module.exports = {
   getDietsFromDb,
   getDietsFromApi,
-  storeDiets,
 };
