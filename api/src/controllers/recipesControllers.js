@@ -63,6 +63,7 @@ const getRecipesByName = async (name) => {
       },
     },
     attributes: ["id", "name", "image"],
+    order: [["createdAt", "DESC"]],
   });
 
   const recipesDbWithDiets = await Promise.all(
