@@ -16,7 +16,7 @@ const getRecipesFromApi = async () => {
   const numberResults = 1;
   const results = await axios.get(
     `${URL_GET_RECIPES}?apiKey=${API_KEY}&addRecipeInformation=true&number=${numberResults}`
-);
+  );
 
   const recipesApi = results.data.results.map((recipe) => {
     return {
@@ -37,14 +37,29 @@ const getRecipesFromApi = async () => {
 
 const getRecipesFromDb = async () => {
   const recipesDb = await Recipe.findAll({
+    include: [
+      {
+        model: Diet,
+        attributes: ["name"],
+        through: {
+          attributes: [],
+        },
+      },
+    ],
     attributes: ["id", "name", "image"],
     order: [["createdAt", "DESC"]],
   });
 
-  const recipesDbWithDiets = await Promise.all(
-    recipesDb.map(async (recipe) => await recipe.allDiets)
-  );
-  return recipesDbWithDiets;
+  const recipes = recipesDb.map((recipe) => {
+    return {
+      id: recipe.id,
+      name: recipe.name,
+      image: recipe.image,
+      diets: setDietsDB(recipe.diets),
+    };
+  });
+
+  return recipes;
 };
 
 const getRecipesByName = async (name) => {
@@ -64,13 +79,26 @@ const getRecipesByName = async (name) => {
     },
     attributes: ["id", "name", "image"],
     order: [["createdAt", "DESC"]],
+    include: [
+      {
+        model: Diet,
+        attributes: ["name"],
+        through: {
+          attributes: [],
+        },
+      },
+    ],
   });
 
-  const recipesDbWithDiets = await Promise.all(
-    recipesDb.map(async (recipe) => await recipe.allDiets)
-  );
-
-  return { recipesFromApi: recipesApi, recipesFromDb: recipesDbWithDiets };
+  const recipesDbCleaned = recipesDb.map((recipe) => {
+    return {
+      id: recipe.id,
+      name: recipe.name,
+      image: recipe.image,
+      diets: setDietsDB(recipe.diets),
+    };
+  });
+  return { recipesFromApi: recipesApi, recipesFromDb: recipesDbCleaned };
 };
 
 const getRecipeById = async (idRecipe) => {
@@ -86,7 +114,7 @@ const getRecipeById = async (idRecipe) => {
       )}/information?apiKey=${API_KEY}`
     );
 
-    if (result) {
+    if (result.data.id) {
       recipe = {
         id: result.data.id,
         name: result.data.title,
@@ -104,15 +132,35 @@ const getRecipeById = async (idRecipe) => {
           step: step.step,
         })),
       };
+    } else {
+      throw new Error("Recipe not found");
     }
   } else {
     //Buscar id en base de datos
-    recipe = await Recipe.findByPk(idRecipe);
+    const recipeDB = await Recipe.findByPk(idRecipe, {
+      include: [
+        {
+          model: Diet,
+          attributes: ["name"],
+          through: {
+            attributes: [],
+          },
+        },
+      ],
+    });
 
-    if (recipe) {
-      recipe = await recipe.allDiets;
-    } else {
+    if (!recipeDB) {
       throw new Error("Recipe not found");
+    } else {
+      recipe = {
+        id: recipeDB.id,
+        name: recipeDB.name,
+        image: recipeDB.image,
+        summary: recipeDB.summary,
+        healthScore: recipeDB.healthScore,
+        procedure: recipeDB.procedure,
+        diets: setDietsDB(recipeDB.diets),
+      };
     }
   }
 
@@ -131,6 +179,10 @@ const setDietsApi = (diets, vegetarian, vegan, glutenFree) => {
     dietsRecipe.push("gluten free");
 
   return dietsRecipe;
+};
+
+const setDietsDB = (diets) => {
+  return diets.map((diet) => diet.name);
 };
 
 const createRecipe = async (
