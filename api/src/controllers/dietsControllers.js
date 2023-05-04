@@ -2,7 +2,9 @@ const { Diet } = require("../db");
 const { getRecipesFromApi } = require("./recipesControllers");
 
 const getDietsFromDb = async () => {
-  const diets = await Diet.findAll();
+  const diets = await Diet.findAll({
+    order: [["name", "ASC"]],
+  });
   return diets;
 };
 
