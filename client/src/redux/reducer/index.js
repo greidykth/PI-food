@@ -1,4 +1,10 @@
-import { CLEAN_DETAIL_RECIPE, GET_DETAIL_RECIPE, GET_RECIPES, GET_RECIPES_BY_NAME } from "../actions/types_actions";
+import {
+  CLEAN_DETAIL_RECIPE,
+  GET_DETAIL_RECIPE,
+  GET_DIETS,
+  GET_RECIPES,
+  GET_RECIPES_BY_NAME,
+} from "../actions/types_actions";
 
 const initialState = {
   allRecipes: [],
@@ -25,12 +31,18 @@ export default function rootReducer(state = initialState, { type, payload }) {
         ...state,
         recipeDetailed: {},
       };
-    
-      case GET_RECIPES_BY_NAME:
-        return {
-          ...state,
-          allRecipes: payload,
-        };
+
+    case GET_RECIPES_BY_NAME:
+      return {
+        ...state,
+        allRecipes: payload,
+      };
+
+    case GET_DIETS:
+      return {
+        ...state,
+        allDiets: payload,
+      };
 
     default:
       return { ...state };

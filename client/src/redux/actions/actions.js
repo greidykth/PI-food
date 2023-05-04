@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CLEAN_DETAIL_RECIPE, GET_DETAIL_RECIPE, GET_RECIPES, GET_RECIPES_BY_NAME } from "./types_actions";
+import { CLEAN_DETAIL_RECIPE, GET_DETAIL_RECIPE, GET_DIETS, GET_RECIPES, GET_RECIPES_BY_NAME } from "./types_actions";
 
 const BASE_URL = "http://localhost:3001";
 
@@ -34,6 +34,16 @@ export const getRecipesByName = (name) => {
     const response = await axios.get(`${BASE_URL}/recipes/?name=${name}`);
     dispatch({
       type: GET_RECIPES_BY_NAME,
+      payload: response.data,
+    });
+  };
+};
+
+export const getDiets = () => {
+  return async function (dispatch) {
+    const response = await axios.get(BASE_URL + "/diets");
+    dispatch({
+      type: GET_DIETS,
       payload: response.data,
     });
   };
