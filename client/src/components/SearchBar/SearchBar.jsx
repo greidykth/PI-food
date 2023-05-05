@@ -8,6 +8,9 @@ const SearchBar = () => {
 
   const handleChange = (event) => {
     setInputSearch(event.target.value);
+    if (event.target.value.length >= 3 || event.target.value.length === 0) {
+      dispatch(getRecipesByName(event.target.value));
+    }
   };
 
   const handleSubmit = (event) => {
