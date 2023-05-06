@@ -7,13 +7,13 @@ const { API_KEY, URL_GET_RECIPES, URL_GET_DETAIL_RECIPE } = process.env;
 const getRecipes = async () => {
   const recipesApi = await getRecipesFromApi();
 
-  const recipesDbWithDiets = await getRecipesFromDb();
+  const recipesDb = await getRecipesFromDb();
 
-  return { recipesFromApi: recipesApi, recipesFromDb: recipesDbWithDiets };
+  return [...recipesDb, ...recipesApi];
 };
 
 const getRecipesFromApi = async () => {
-  const numberResults = 1;
+  const numberResults = 10;
   const results = await axios.get(
     `${URL_GET_RECIPES}?apiKey=${API_KEY}&addRecipeInformation=true&number=${numberResults}`
   );
@@ -23,12 +23,14 @@ const getRecipesFromApi = async () => {
       id: recipe.id,
       name: recipe.title,
       image: recipe.image,
+      healthScore: recipe.healthScore,
       diets: setDietsApi(
         recipe.diets,
         recipe.vegetarian,
         recipe.vegan,
         recipe.glutenFree
       ),
+      createdOnDB: false,
     };
   });
 
@@ -46,7 +48,7 @@ const getRecipesFromDb = async () => {
         },
       },
     ],
-    attributes: ["id", "name", "image"],
+    attributes: ["id", "name", "image", "healthScore", "createdOnDB"],
     order: [["createdAt", "DESC"]],
   });
 
@@ -55,7 +57,9 @@ const getRecipesFromDb = async () => {
       id: recipe.id,
       name: recipe.name,
       image: recipe.image,
+      healthScore: recipe.healthScore,
       diets: setDietsDB(recipe.diets),
+    createdOnDB: recipe.createdOnDB,
     };
   });
 
@@ -77,7 +81,7 @@ const getRecipesByName = async (name) => {
         [Op.iLike]: `%${name}%`,
       },
     },
-    attributes: ["id", "name", "image"],
+    attributes: ["id", "name", "image", "healthScore", "createdOnDB"],
     order: [["createdAt", "DESC"]],
     include: [
       {
@@ -96,9 +100,10 @@ const getRecipesByName = async (name) => {
       name: recipe.name,
       image: recipe.image,
       diets: setDietsDB(recipe.diets),
+      createdOnDB: recipe.createdOnDB,
     };
   });
-  return { recipesFromApi: recipesApi, recipesFromDb: recipesDbCleaned };
+  return [...recipesDbCleaned, ...recipesApi];
 };
 
 const getRecipeById = async (idRecipe) => {
@@ -131,6 +136,7 @@ const getRecipeById = async (idRecipe) => {
           number: step.number,
           step: step.step,
         })),
+        createdOnDB: false,
       };
     } else {
       throw new Error("Recipe not found");
@@ -160,6 +166,7 @@ const getRecipeById = async (idRecipe) => {
         healthScore: recipeDB.healthScore,
         procedure: recipeDB.procedure,
         diets: setDietsDB(recipeDB.diets),
+        createdOnDB: recipeDB.createdOnDB,
       };
     }
   }
