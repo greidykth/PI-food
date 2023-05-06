@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CLEAN_DETAIL_RECIPE, GET_DETAIL_RECIPE, GET_DIETS, GET_RECIPES, GET_RECIPES_BY_NAME } from "./types_actions";
+import { CLEAN_DETAIL_RECIPE, FILTER_RECIPES, GET_DETAIL_RECIPE, GET_DIETS, GET_RECIPES, GET_RECIPES_BY_NAME } from "./types_actions";
 
 const BASE_URL = "http://localhost:3001";
 
@@ -46,5 +46,12 @@ export const getDiets = () => {
       type: GET_DIETS,
       payload: response.data,
     });
+  };
+};
+
+export const filterRecipes = (filters) => {
+  return {
+      type: FILTER_RECIPES,
+      payload: filters,
   };
 };
