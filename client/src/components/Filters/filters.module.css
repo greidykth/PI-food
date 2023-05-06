@@ -1,0 +1,81 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0px 40px 20px 40px;
+  background-color: white;
+  width: auto;
+}
+
+h3 {
+  text-align: start;
+  color: #ed714d;
+  margin-top: 0;
+}
+
+h4 {
+  text-align: start;
+  margin-top: 0;
+}
+
+.reset{
+  align-self: center;
+  background-color: #ed714d;
+  cursor: pointer;
+  text-decoration: none;
+  color: #ffffff;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: small;
+  border-radius: 0.3rem;
+  font-weight: bold;
+  padding: 5px 5px;
+  border: 1px solid #ee562c;
+}
+
+.dietsContainer{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.originContainer{
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.originDietsContainer{
+  display: flex;
+  flex-direction: row;
+  border-right: 1px solid rgb(190, 189, 189);
+}
+
+.filtersContainer{
+  display: flex;
+  flex-direction: column;
+}
+
+.diet{
+  margin: 0.2rem;
+}
+
+.orderContainer{
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+}
+
+.nameHealthScoreContainer{
+  display: flex;
+  flex-direction: row;
+}
+
+.orderSelect {
+  padding: 0 8px;
+}
