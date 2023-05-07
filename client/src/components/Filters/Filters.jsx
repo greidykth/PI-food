@@ -77,6 +77,11 @@ const Filters = () => {
     setFilters({ ...filters, diets });
   };
 
+  const resetFiltersHandler = () => {
+    setFilters(initialState);
+    setAllSelected(true);
+  }
+
   return (
     <div className={style.container}>
       <div className={style.filtersContainer}>
@@ -189,7 +194,7 @@ const Filters = () => {
         </div>
       </div>
 
-      <Link className={style.reset} onClick={() => setFilters(initialState)}>Reset filters</Link>
+      <Link className={style.reset} onClick={resetFiltersHandler}>Reset filters</Link>
     </div>
   );
 };
