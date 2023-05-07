@@ -12,17 +12,20 @@ const Nav = () => {
   };
 
   return (
-      <div className={style.mainContainer}>
-        <div className={style.navigation}>
-        <Link to="/home">Home</Link>
+    <div className={style.mainContainer}>
+      <div className={style.navigation}>
+        <Link onClick={() => setShowFilters(false)}>
+          <h2>Flavor Fusion</h2>
+        </Link>
+        <Link to="/home" onClick={() => setShowFilters(false)}>
+          Home
+        </Link>
         <Link to="/recipes/create">Create Recipe</Link>
         <Link onClick={showFiltersHandler}>Filters</Link>
         <SearchBar />
-        </div>
-        <div className="">
-        {showFilters && <Filters />}
-        </div>
       </div>
+      <div className="">{showFilters && <Filters />}</div>
+    </div>
   );
 };
 
