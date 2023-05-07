@@ -99,6 +99,7 @@ const getRecipesByName = async (name) => {
       id: recipe.id,
       name: recipe.name,
       image: recipe.image,
+      healthScore: recipe.healthScore,
       diets: setDietsDB(recipe.diets),
       createdOnDB: recipe.createdOnDB,
     };
@@ -200,7 +201,7 @@ const createRecipe = async (
   procedure,
   diets
 ) => {
-  if (![name, image, summary, healthScore, procedure, diets].every(Boolean)) {
+  if (![name, image, summary, healthScore, procedure, diets].every(Boolean) || procedure.length === 0 || diets.length === 0) {
     throw Error("Missing data for recipe");
   }
   const newRecipe = await Recipe.create({
