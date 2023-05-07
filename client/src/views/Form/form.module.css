@@ -1,5 +1,10 @@
 .principalContainer {
-  background-color: #fbbd8f;
+  /* background-color: #fbbd8f; */
+  background: url(../../img/img-form.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .container {
