@@ -11,13 +11,13 @@
   justify-content: center;
 }
 
-h1 {
+.principalContainer h1 {
   margin: 0;
   color: #ed714d;
   font-size: 40px;
 }
 
-p {
+.principalContainer p {
   font-size: large;
   color: rgb(69, 69, 69);
 }
