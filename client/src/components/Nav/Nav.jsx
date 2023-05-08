@@ -14,7 +14,7 @@ const Nav = () => {
   return (
     <div className={style.mainContainer}>
       <div className={style.navigation}>
-        <Link onClick={() => setShowFilters(false)}>
+        <Link to="/home" onClick={() => setShowFilters(false)}>
           <h2>Flavor Fusion</h2>
         </Link>
         <Link to="/home" onClick={() => setShowFilters(false)}>
