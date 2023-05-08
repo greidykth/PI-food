@@ -15,6 +15,7 @@ const LandingPage = () => {
         <NavLink to="/home">
           <button className={style.buttonHome}>Let's get stared!</button>
         </NavLink>
+        <p>Individual project made by Greidy Peña</p>
       </div>
     </div>
   );
