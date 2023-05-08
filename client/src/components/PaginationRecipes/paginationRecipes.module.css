@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.container button {
+  background-color: #ed714d;
+  border: 1px solid #ee562c;
+  padding: 5px 10px;
+  border-radius: 0.3rem;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.container button svg {
+  width: 16px;
+  fill: white;
+}
+
+.container button:disabled {
+  border: none;
+  background-color: #5d5d5d;
+  cursor: no-drop;
+}
+
+.container input {
+  height: 30px;
+  width: 50px;
+  text-align: center;
+  border: 1px solid #ed714d;
+  color: rgb(65, 64, 64);
+  border-radius: 0.3rem;
+}
+
+.container p{
+  color: #ed714d;
+  font-weight: bold;
+}
