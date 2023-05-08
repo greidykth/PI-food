@@ -25,3 +25,9 @@
   font-size: large;
   font-weight: 600;
 }
+
+h2 {
+  margin: 0;
+  color: #ed714d;
+  font-size: 30px;
+}
