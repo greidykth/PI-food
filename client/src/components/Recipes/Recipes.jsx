@@ -6,7 +6,7 @@ import { PaginationRecipes } from "../PaginationRecipes/PaginationRecipes";
 import Loader from "../Loader/Loader";
 
 const Recipes = () => {
-  const { filteredRecipes, loader } = useSelector((state) => state);
+  const { filteredRecipes } = useSelector((state) => state);
   const [page, setPage] = useState(1);
   const [perPage, setPerPage] = useState(9);
 
@@ -35,7 +35,7 @@ const Recipes = () => {
           </>
         ) : <Loader />}
       </div>
-      <PaginationRecipes page={page} setPage={setPage} maxPage={maxPage} />
+      {filteredRecipes.length > 0 && <PaginationRecipes page={page} setPage={setPage} maxPage={maxPage} />}
     </div>
   );
 };
