@@ -203,12 +203,7 @@ const Form = () => {
       <div className={style.container}>
         <div className={style.formContainer}>
           <div className={style.formDiv}>
-            <div className={style.backButtonDiv}>
-              <NavLink to="/home">
-                {" "}
-                <Back /> Back to home
-              </NavLink>
-            </div>
+            
             <form autoComplete="off" onSubmit={submitHandler}>
               <h2>New Recipe </h2>
               <div className={style.nameScoreImageContainer}>
@@ -446,6 +441,12 @@ const Form = () => {
               </button>
             </form>
           </div>
+            <div className={style.backButtonDiv}>
+              <NavLink to="/home">
+                {" "}
+                <Back /> Back to home
+              </NavLink>
+            </div>
         </div>
       </div>
     </div>
