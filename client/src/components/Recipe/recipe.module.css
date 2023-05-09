@@ -5,8 +5,8 @@
   transition: all 0.25s;
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  align-items: start;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .divInfo{
@@ -28,6 +28,10 @@
 .origin, .healthScore{
   align-self: start;
   margin-top: 0;
+}
+
+.origin {
+  color: #9e9797;
 }
 
 .healthScore{
