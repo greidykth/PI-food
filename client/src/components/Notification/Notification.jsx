@@ -12,7 +12,7 @@ const Notification = ({message}) => {
       setTimeout(() => {
         dispatch(hideNotification())
       }, 3100);
-    }, [])
+    }, [dispatch])
     
     return (
     <div className={styles.notification + " " + styles[notification.type]}>
