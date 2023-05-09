@@ -13,7 +13,7 @@ const getRecipes = async () => {
 };
 
 const getRecipesFromApi = async () => {
-  const numberResults = 1;
+  const numberResults = 100;
   const results = await axios.get(
     `${URL_GET_RECIPES}?apiKey=${API_KEY}&addRecipeInformation=true&number=${numberResults}`
   );
