@@ -11,6 +11,10 @@ const Home = () => {
     dispatch(getRecipes());
   }, [dispatch])
   
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
   return (
     <div>
       <Recipes />
