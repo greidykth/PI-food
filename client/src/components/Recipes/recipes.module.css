@@ -9,8 +9,9 @@
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
-    gap: 1em;
-    padding: 20px;
+    row-gap: 2rem;
+    gap: 3.5rem;
+    padding: 2rem 4rem ;
 }
 
 .container h3 {
