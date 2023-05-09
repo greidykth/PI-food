@@ -29,7 +29,7 @@ const Recipes = () => {
                 image={recipe.image}
                 diets={recipe.diets}
                 healthScore={recipe.healthScore}
-                source={recipe.createdOnDB ? "DB" : "API"}
+                source={recipe.createdOnDB ? "My recipes" : "Other recipes"}
               />
             ))}
           </>
