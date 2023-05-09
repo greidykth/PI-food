@@ -41,12 +41,20 @@
 }
 
 .backButtonDiv {
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 .backButtonDiv a {
   color: #ed714d;
+  background-color: white;
+  padding: 0.8rem;
+  border-radius: 5px;
+  -webkit-box-shadow: 10px 14px 33px -9px rgba(117, 116, 116, 1);
+  -moz-box-shadow: 10px 14px 33px -9px rgba(117, 116, 116, 1);
+  box-shadow: 10px 14px 33px -9px rgba(117, 116, 116, 1);
 }
 
 label {
