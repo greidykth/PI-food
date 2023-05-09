@@ -8,20 +8,21 @@
   width: auto;
 }
 
-h3 {
+.container h3 {
   text-align: start;
   color: #ed714d;
   margin-top: 0;
 }
 
-h4 {
+.container h4 {
   text-align: start;
   margin-top: 0;
+  color: #0eb6c2;
 }
 
 .reset{
   align-self: center;
-  background-color: #ed714d;
+  background-color: #0eb6c2;
   cursor: pointer;
   text-decoration: none;
   color: #ffffff;
@@ -31,7 +32,7 @@ h4 {
   border-radius: 0.3rem;
   font-weight: bold;
   padding: 5px 5px;
-  border: 1px solid #ee562c;
+  border: 1px solid #48b9c1;
 }
 
 .dietsContainer{
