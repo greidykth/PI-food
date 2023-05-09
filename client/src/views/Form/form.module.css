@@ -7,6 +7,14 @@
   background-size: cover;
 }
 
+.principalContainer h2{
+  color: #0eb6c2;
+}
+
+.stepTitle {
+  color: #0eb6c2;
+}
+
 .container {
   display: flex;
   justify-content: center;
@@ -85,7 +93,7 @@ select {
 }
 
 .addButton {
-  background-color: #ed714d;
+  background-color: #0eb6c2;
   color: #ffffff;
   margin-left: 10px;
   font-size: x-large;
@@ -93,7 +101,7 @@ select {
   border-radius: 0.3rem;
   padding: 0 15px;
   cursor: pointer;
-  border: 1px solid #ee562c;
+  border: 1px solid #48b9c1;
 }
 
 .addButton:disabled {
@@ -103,10 +111,11 @@ select {
   cursor: auto;
   font-size: x-large;
   font-weight: bold;
+  cursor: no-drop;
 }
 
 .delete {
-  color: #ed714d;
+  color: #0eb6c2;
   font-size: large;
   margin-left: 0.2rem;
   cursor: pointer;
@@ -115,7 +124,16 @@ select {
 }
 
 .edit {
-  color: #ed714d;
+  color: #0eb6c2;
+  margin-left: 0.2rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: large;
+}
+
+.check {
+  color: #0eb6c2;
   margin-left: 0.2rem;
   cursor: pointer;
   background: none;
@@ -124,7 +142,7 @@ select {
 }
 
 .createButton {
-  background-color: #ed714d;
+  background-color: #0eb6c2;
   color: #ffffff;
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -133,11 +151,11 @@ select {
   font-weight: bold;
   padding: 5px 15px;
   cursor: pointer;
-  border: 1px solid #ee562c;
+  border: 1px solid #48b9c1;
 }
 
 .createButton:hover {
-  background-color: #ee582e;
+  background-color: #097981;
 }
 
 .dietsSelectedContainer {
@@ -234,6 +252,32 @@ hr {
   align-self: self-start;
   font-size: small;
   text-align: start;
+}
+
+.addButton svg {
+  width: 14px;
+  fill: white;
+}
+
+.delete svg {
+  width: 14px;
+  fill: #ed714d;
+}
+
+.edit svg {
+  width: 14px;
+  fill: #0eb6c2;
+}
+
+.check svg {
+  width: 17px;
+  fill: #0eb6c2;
+}
+
+.backButtonDiv svg {
+  width: 14px;
+  fill: #ed714d;
+  margin-right: 0.2rem;
 }
 
 @media (max-width: 768px) {
