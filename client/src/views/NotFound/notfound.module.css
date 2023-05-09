@@ -1,0 +1,50 @@
+.principalContainer {
+  background: url(../../img/img-not-found.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.textContainer {
+  width: 24rem;
+  padding: 4rem;
+  padding: 30px;
+  margin-left: 1rem;
+}
+
+.principalContainer h1 {
+    margin: 0;
+    color: #ed714d;
+    font-size: 40px;
+  }
+  
+  .principalContainer p {
+    font-size: large;
+    color: rgb(69, 69, 69);
+  }
+
+  .buttonHome {
+    background-color: #ed714d;
+    color: #ffffff;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: large;
+    border-radius: 0.3rem;
+    font-weight: bold;
+    padding: 5px 15px;
+    cursor: pointer;
+    border: 1px solid #ee562c;
+  }
+  
+  @media (max-width: 768px) {
+    .textContainer {
+      width: 20rem;
+      padding: 2rem;
+    }
+  }
