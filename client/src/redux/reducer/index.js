@@ -1,4 +1,4 @@
-import { filterByDietHelper, orderByHealthScoreHelper, orderByNameHelper } from "../../helpers";
+import { orderByHealthScoreHelper, orderByNameHelper } from "../../helpers";
 import {
   CLEAN_DETAIL_RECIPE,
   FILTER_RECIPES,
@@ -77,8 +77,6 @@ export default function rootReducer(state = initialState, { type, payload }) {
         }
       })
       filteredRecipes = [...recipesTemporal1];
-      // filteredRecipes = filterByDietHelper([...filteredRecipes], payload.diets);
-      
 
       //order by name
       if (payload.orderName !== "DEFAULT") {
