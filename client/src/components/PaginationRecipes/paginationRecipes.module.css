@@ -24,9 +24,14 @@
   fill: white;
 }
 
+.container button:disabled svg {
+  width: 16px;
+  fill: gray;
+}
+
 .container button:disabled {
   border: none;
-  background-color: #5d5d5d;
+  background-color: #9e9797;
   cursor: no-drop;
 }
 
