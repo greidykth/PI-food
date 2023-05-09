@@ -6,6 +6,8 @@ import {
   GET_DIETS,
   GET_RECIPES,
   GET_RECIPES_BY_NAME,
+  HIDE_NOTIFICATION,
+  SHOW_NOTIFICATION,
 } from "../actions/types_actions";
 
 const initialState = {
@@ -13,6 +15,10 @@ const initialState = {
   filteredRecipes: [],
   recipeDetailed: {},
   allDiets: [],
+  notification: {
+    message: "",
+    type: "",
+  },
 };
 
 export default function rootReducer(state = initialState, { type, payload }) {
@@ -95,11 +101,16 @@ export default function rootReducer(state = initialState, { type, payload }) {
         filteredRecipes,
       };
 
-
-
+      case SHOW_NOTIFICATION:
       return {
         ...state,
-        filteredRecipes: filteredRecipes,
+        notification: payload
+      };
+
+      case HIDE_NOTIFICATION:
+      return {
+        ...state,
+        notification: initialState.notification
       };
 
     default:

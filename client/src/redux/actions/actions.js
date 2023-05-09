@@ -1,25 +1,46 @@
 import axios from "axios";
-import { CLEAN_DETAIL_RECIPE, FILTER_RECIPES, GET_DETAIL_RECIPE, GET_DIETS, GET_RECIPES, GET_RECIPES_BY_NAME } from "./types_actions";
+import { CLEAN_DETAIL_RECIPE, FILTER_RECIPES, GET_DETAIL_RECIPE, GET_DIETS, GET_RECIPES, GET_RECIPES_BY_NAME, HIDE_NOTIFICATION, SHOW_NOTIFICATION } from "./types_actions";
 
 const BASE_URL = "http://localhost:3001";
 
 export const getRecipes = () => {
   return async function (dispatch) {
-    const response = await axios.get(BASE_URL + "/recipes");
-    dispatch({
-      type: GET_RECIPES,
-      payload: response.data,
-    });
+    axios.get(BASE_URL + "/recipes").then( (response) => {
+      dispatch({
+        type: GET_RECIPES,
+        payload: response.data,
+      });
+    }).catch( (error) => {
+      dispatch({type: SHOW_NOTIFICATION, payload:{message: error.message, type: "error"}});
+    })
+    
   };
 };
 
 export const getDetailRecipe = (id) => {
   return async function (dispatch) {
-    const response = await axios.get(BASE_URL + "/recipes/" + id);
-    dispatch({
-      type: GET_DETAIL_RECIPE,
-      payload: response.data,
-    });
+    axios.get(BASE_URL + "/recipes/" + id).then( (response) => {
+      dispatch({
+        type: GET_DETAIL_RECIPE,
+        payload: response.data,
+      });
+    }).catch( (error) => {
+      dispatch({type: SHOW_NOTIFICATION, payload:{message: error.message, type: "error"}});
+    })
+   
+  };
+};
+
+export const getRecipesByName = (name) => {
+  return async function (dispatch) {
+    axios.get(`${BASE_URL}/recipes/?name=${name}`).then( (response) => {
+      dispatch({
+        type: GET_RECIPES_BY_NAME,
+        payload: response.data,
+      });
+    }).catch( (error) => {
+      dispatch({type: SHOW_NOTIFICATION, payload:{message: error.message, type: "error"}});
+    })
   };
 };
 
@@ -29,23 +50,16 @@ export const cleanDetailRecipe = () => {
   };
 };
 
-export const getRecipesByName = (name) => {
-  return async function (dispatch) {
-    const response = await axios.get(`${BASE_URL}/recipes/?name=${name}`);
-    dispatch({
-      type: GET_RECIPES_BY_NAME,
-      payload: response.data,
-    });
-  };
-};
-
 export const getDiets = () => {
   return async function (dispatch) {
-    const response = await axios.get(BASE_URL + "/diets");
-    dispatch({
-      type: GET_DIETS,
-      payload: response.data,
-    });
+    await axios.get(BASE_URL + "/diets").then( (response) => {
+      dispatch({
+        type: GET_DIETS,
+        payload: response.data,
+      });
+    }).catch( (error) => {
+      dispatch({type: SHOW_NOTIFICATION, payload:{message: error.message, type: "error"}});
+    })
   };
 };
 
@@ -55,3 +69,16 @@ export const filterRecipes = (filters) => {
       payload: filters,
   };
 };
+
+export function showNotification(notification) {
+  return {
+    type: SHOW_NOTIFICATION,
+    payload: notification
+  };
+}
+
+export function hideNotification() {
+  return {
+    type: HIDE_NOTIFICATION,
+  };
+}
