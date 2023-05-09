@@ -3,10 +3,10 @@ import { useSelector } from "react-redux";
 import Recipe from "../Recipe/Recipe";
 import style from "./recipes.module.css";
 import { PaginationRecipes } from "../PaginationRecipes/PaginationRecipes";
-import  Loading  from '../../icons/icons8-porridge.gif'
+import Loader from "../Loader/Loader";
 
 const Recipes = () => {
-  const { filteredRecipes } = useSelector((state) => state);
+  const { filteredRecipes, loader } = useSelector((state) => state);
   const [page, setPage] = useState(1);
   const [perPage, setPerPage] = useState(9);
 
@@ -16,7 +16,7 @@ const Recipes = () => {
     <div className={style.container}>
       <h3>Recipes found: {filteredRecipes.length}</h3>
       <div className={style.cardsContainer}>
-        {filteredRecipes && (
+        {filteredRecipes.length ? (
           <>
             {filteredRecipes.slice(
           (page - 1) * perPage,
@@ -33,10 +33,7 @@ const Recipes = () => {
               />
             ))}
           </>
-        )}
-        {filteredRecipes.length === 0 && 
-          <img src={Loading} alt="Mi GIF" />
-        }
+        ) : <Loader />}
       </div>
       <PaginationRecipes page={page} setPage={setPage} maxPage={maxPage} />
     </div>
