@@ -4,32 +4,32 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 100vh;
-  overflow: auto;
+  min-height: 100vh;
 }
+
 .container {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .recipeContainer {
-    width: 100%;
-    max-width: 40rem;
-    margin: 8px 0;
-    margin-top: 1rem;
-    margin-bottom: 1.4rem;
+  width: 100%;
+  max-width: 40rem;
+  margin: 8px 0;
+  margin-top: 1rem;
+  margin-bottom: 1.4rem;
 }
 
 .detailDiv {
-    padding-bottom: 1.5rem;
-    background-color: white;
-    border-radius: 0.5rem;
-    -webkit-box-shadow: 10px 14px 33px -9px rgba(117, 116, 116, 1);
-    -moz-box-shadow: 10px 14px 33px -9px rgba(117, 116, 116, 1);
-    box-shadow: 10px 14px 33px -9px rgba(117, 116, 116, 1);
-  }
+  padding-bottom: 1.5rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  -webkit-box-shadow: 10px 14px 33px -9px rgba(117, 116, 116, 1);
+  -moz-box-shadow: 10px 14px 33px -9px rgba(117, 116, 116, 1);
+  box-shadow: 10px 14px 33px -9px rgba(117, 116, 116, 1);
+}
 
 .recipeContainer img {
   width: 40rem;
@@ -37,9 +37,15 @@
 }
 
 .backButtonDiv {
-  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+  padding: 0.8rem;
+  border-radius: 5px;
   display: flex;
   justify-content: flex-end;
+  background-color: white;
+  -webkit-box-shadow: 10px 14px 33px -9px rgba(117, 116, 116, 1);
+  -moz-box-shadow: 10px 14px 33px -9px rgba(117, 116, 116, 1);
+  box-shadow: 10px 14px 33px -9px rgba(117, 116, 116, 1);
 }
 
 .backButtonDiv svg {
@@ -53,109 +59,114 @@
   font-weight: bold;
 }
 
-.infoDetail{
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    padding-left: 2rem;
-    padding-right: 2rem;
+.infoDetail {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
-.id{
-    color: #0eb6c2;
-    margin-bottom: 0;
+.id {
+  color: #0eb6c2;
+  margin-bottom: 0;
 }
 
 .name {
-    margin-top: 1rem;
-    color: #ed714d;
-    text-align: left;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #ed714d;
-    text-transform: uppercase;
+  margin-top: 1rem;
+  color: #ed714d;
+  text-align: left;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ed714d;
+  text-transform: uppercase;
 }
 
-.diets, .summary, .method{
-    color: #ed714d;
-    margin-bottom: 0;
-    margin-top: 0;
+.diets,
+.summary,
+.method {
+  color: #ed714d;
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
-.summary{
+.summary {
   line-height: 22px;
 }
 
-.method{
-    color: #ed714d;
-    margin-bottom: 0;
-    margin-top: 0;
+.method {
+  color: #ed714d;
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
 .dietsSelectedContainer {
-    display: flex;
-    flex-direction: row;
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    border-radius: 0.5rem;
-    flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-radius: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .spanDiet {
-    border-radius: 1rem;
-    background-color: #f9d1b2;
-    padding-left: 0.6rem;
-    padding-right: 0.6rem;
-    padding-top: 0.3rem;
-    padding-bottom: 0.3rem;
-    margin: 0.3rem;
-    font-size: small;
-  }
+  border-radius: 1rem;
+  background-color: #f9d1b2;
+  padding-left: 0.6rem;
+  padding-right: 0.6rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  margin: 0.3rem;
+  font-size: small;
+}
 
-  .stepsDiv{
-    display: flex;
-    flex-direction: column;
-  }
+.stepsDiv {
+  display: flex;
+  flex-direction: column;
+}
 
-  .step{
-    display: flex;
-    flex-direction: column;
-  }
+.step {
+  display: flex;
+  flex-direction: column;
+}
 
-  .stepNumber {
-    align-self: start;
-    margin-bottom: 0;
-    color: #0eb6c2;
-  }
+.stepNumber {
+  align-self: start;
+  margin-bottom: 0;
+  color: #0eb6c2;
+}
 
 .stepParagraph {
-    margin-bottom: 0;
+  margin-bottom: 0;
+}
+.origin {
+  color: #9e9797;
 }
 
 .infoDetail p {
-    text-align: justify;
+  text-align: justify;
 }
 
 .infoDetail a {
-    color: #ed714d;
+  color: #ed714d;
 }
 
-.healthScore{
-    color: #0eb6c2;
-    align-self: center;
-    background-color: #d1f7fa;
-    padding: 0.5rem;
-    margin-top: 1rem;
-    margin-bottom: 0;
-    font-weight: bolder;
+.healthScore {
+  color: #0eb6c2;
+  align-self: center;
+  background-color: #d1f7fa;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 0;
+  font-weight: bolder;
 }
 
-.loader img{
-    width: 20rem;
-    border-radius: 50%;
-    margin-bottom: 3rem;
-    margin-top: 3rem;
+.loader img {
+  width: 20rem;
+  border-radius: 50%;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
 }
 
 @media (max-width: 768px) {
