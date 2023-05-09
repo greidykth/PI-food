@@ -13,7 +13,8 @@
     padding: 20px;
 }
 
-h3 {
+.container h3 {
     margin-top: 1rem;
     margin-bottom: 0;
+    color: #ed714d
 }
