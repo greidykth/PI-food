@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 import style from "./nav.module.css";
 import Filters from "../Filters/Filters";
+import SaladIcon from "../../icons/salad.png";
 
 const Nav = () => {
   const [showFilters, setShowFilters] = useState(false);
@@ -14,9 +15,12 @@ const Nav = () => {
   return (
     <div className={style.mainContainer}>
       <div className={style.navigation}>
-        <Link to="/home" onClick={() => setShowFilters(false)}>
-          <h2>Flavor Fusion</h2>
-        </Link>
+        <div className={style.logoContainer}>
+          <img src={SaladIcon} />
+          <Link to="/home" onClick={() => setShowFilters(false)}>
+            <h2>Fusion of Flavores</h2>
+          </Link>
+        </div>
         <Link to="/home" onClick={() => setShowFilters(false)}>
           Home
         </Link>
