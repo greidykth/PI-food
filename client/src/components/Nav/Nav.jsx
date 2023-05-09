@@ -16,7 +16,7 @@ const Nav = () => {
     <div className={style.mainContainer}>
       <div className={style.navigation}>
         <div className={style.logoContainer}>
-          <img src={SaladIcon} />
+          <img src={SaladIcon} alt="logo" />
           <Link to="/home" onClick={() => setShowFilters(false)}>
             <h2>Fusion of Flavores</h2>
           </Link>
