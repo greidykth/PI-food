@@ -18,7 +18,7 @@
 }
 
 .searchContainer button {
-  background-color: #ed714d;
+  background-color: #0eb6c2;
   color: #ffffff;
   font-size: large;
   border-radius: 0.3rem;
@@ -26,7 +26,7 @@
   font-weight: bold;
   padding: 5px 15px;
   cursor: pointer;
-  border: 1px solid #ee562c;
+  border: 1px solid #48b9c1;
   max-width: 120px;
 }
 
