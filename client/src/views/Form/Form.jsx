@@ -2,9 +2,14 @@ import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import validationForm from "../../validationForm";
 import { useDispatch, useSelector } from "react-redux";
-import { getDiets } from "../../redux/actions/actions";
+import { getDiets, showNotification } from "../../redux/actions/actions";
 import style from "./form.module.css";
 import axios from "axios";
+import { ReactComponent as Add } from "../../icons/mas.svg";
+import { ReactComponent as Delete } from "../../icons/cruz.svg";
+import { ReactComponent as Edit } from "../../icons/lapiz.svg";
+import { ReactComponent as Back } from "../../icons/tarjeta-de-direccion.svg";
+import { ReactComponent as Check } from "../../icons/check.svg";
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -146,21 +151,49 @@ const Form = () => {
     const errosEmpty = Object.values(errors).every((value) => value === "");
 
     //verificar que no hay errores y que el form esta lleno con toda la data
-    if (errosEmpty && form.procedure.length && form.diets.length) {
-        setErrors((oldErrors) => ({ ...oldErrors, diets: ""}));
-        setErrors((oldErrors) => ({ ...oldErrors, procedure: ""}));
+    if (
+      errosEmpty &&
+      form.procedure.length &&
+      form.diets.length &&
+      form.name !== "" &&
+      form.image !== "" &&
+      form.healthScore !== "" &&
+      form.summary !== ""
+    ) {
+      setErrors((oldErrors) => ({ ...oldErrors, diets: "" }));
+      setErrors((oldErrors) => ({ ...oldErrors, procedure: "" }));
 
       axios
         .post("http://localhost:3001/recipes/", form)
-        .then(navigate("/home"))
-        .catch((err) => console.log(err));
+        .then((response) => {
+          dispatch(
+            showNotification({
+              message: "Recipe created successfully",
+              type: "success",
+            })
+          );
+          navigate("/home");
+        })
+        .catch((error) => {
+          dispatch(
+            showNotification({
+              message: error.response.data.error,
+              type: "error",
+            })
+          );
+        });
     } else {
-
       if (form.diets.length === 0) {
-        setErrors((oldErrors) => ({ ...oldErrors, diets: "Please add at least one diet"}));
+        setErrors((oldErrors) => ({
+          ...oldErrors,
+          diets: "Please add at least one diet",
+        }));
       }
       if (form.procedure.length === 0) {
-        setErrors((oldErrors) => ({ ...oldErrors, procedure: "Please add at least one step"}));
+        setErrors((oldErrors) => ({
+          ...oldErrors,
+          procedure: "Please add at least one step",
+        }));
       }
     }
   };
@@ -171,7 +204,10 @@ const Form = () => {
         <div className={style.formContainer}>
           <div className={style.formDiv}>
             <div className={style.backButtonDiv}>
-              <NavLink to="/home">Back to home</NavLink>
+              <NavLink to="/home">
+                {" "}
+                <Back /> Back to home
+              </NavLink>
             </div>
             <form autoComplete="off" onSubmit={submitHandler}>
               <h2>New Recipe </h2>
@@ -283,7 +319,7 @@ const Form = () => {
                   onClick={addDietHandler}
                   disabled={selectedDiet.id === 0}
                 >
-                  +
+                  <Add />
                 </button>
               </div>
 
@@ -299,7 +335,7 @@ const Form = () => {
                         onClick={() => onDeleteDietHandler(diet)}
                         className={style.delete}
                       >
-                        x
+                        <Delete />
                       </button>
                     </span>
                   ))}
@@ -312,7 +348,9 @@ const Form = () => {
 
               {/* Step by step */}
               <div>
-                <label htmlFor="step">Step by step: </label>
+                <label className={style.stepTitle} htmlFor="step">
+                  Step by step:{" "}
+                </label>
                 {/* Added steps */}
                 <div className={style.addedStepsContainer}>
                   {form.procedure &&
@@ -332,9 +370,9 @@ const Form = () => {
                                 onClick={() =>
                                   saveChangesEditStepHandler(editStep)
                                 }
-                                className={style.edit}
+                                className={style.check}
                               >
-                                Check
+                                <Check />
                               </button>
                             ) : (
                               <button
@@ -342,7 +380,7 @@ const Form = () => {
                                 onClick={() => onEditStepHandler(stepAdded)}
                                 className={style.edit}
                               >
-                                E
+                                <Edit />
                               </button>
                             )}
                             <button
@@ -350,7 +388,7 @@ const Form = () => {
                               onClick={() => onDeleteStepHandler(stepAdded)}
                               className={style.delete}
                             >
-                              x
+                              <Delete />
                             </button>
                           </div>
                         </div>
@@ -399,7 +437,7 @@ const Form = () => {
                     onClick={addStepHandler}
                     disabled={!newStep.step}
                   >
-                    +
+                    <Add />
                   </button>
                 </div>
               </div>
