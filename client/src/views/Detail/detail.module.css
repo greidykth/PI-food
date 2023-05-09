@@ -1,0 +1,172 @@
+.principalContainer {
+  background: url(../../img/img-detail.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100vh;
+  overflow: auto;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.recipeContainer {
+    width: 100%;
+    max-width: 40rem;
+    margin: 8px 0;
+    margin-top: 1rem;
+    margin-bottom: 1.4rem;
+}
+
+.detailDiv {
+    padding-bottom: 1.5rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    -webkit-box-shadow: 10px 14px 33px -9px rgba(117, 116, 116, 1);
+    -moz-box-shadow: 10px 14px 33px -9px rgba(117, 116, 116, 1);
+    box-shadow: 10px 14px 33px -9px rgba(117, 116, 116, 1);
+  }
+
+.recipeContainer img {
+  width: 40rem;
+  border-radius: 5px 5px 0 0;
+}
+
+.backButtonDiv {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.backButtonDiv svg {
+  width: 14px;
+  fill: #ed714d;
+  margin-right: 0.2rem;
+}
+
+.backButtonDiv a {
+  color: #ed714d;
+  font-weight: bold;
+}
+
+.infoDetail{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.id{
+    color: #0eb6c2;
+    margin-bottom: 0;
+}
+
+.name {
+    margin-top: 1rem;
+    color: #ed714d;
+    text-align: left;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #ed714d;
+    text-transform: uppercase;
+}
+
+.diets, .summary, .method{
+    color: #ed714d;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.summary{
+  line-height: 22px;
+}
+
+.method{
+    color: #ed714d;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.dietsSelectedContainer {
+    display: flex;
+    flex-direction: row;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-radius: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.spanDiet {
+    border-radius: 1rem;
+    background-color: #f9d1b2;
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    margin: 0.3rem;
+    font-size: small;
+  }
+
+  .stepsDiv{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .step{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stepNumber {
+    align-self: start;
+    margin-bottom: 0;
+    color: #0eb6c2;
+  }
+
+.stepParagraph {
+    margin-bottom: 0;
+}
+
+.infoDetail p {
+    text-align: justify;
+}
+
+.infoDetail a {
+    color: #ed714d;
+}
+
+.healthScore{
+    color: #0eb6c2;
+    align-self: center;
+    background-color: #d1f7fa;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    margin-bottom: 0;
+    font-weight: bolder;
+}
+
+.loader img{
+    width: 20rem;
+    border-radius: 50%;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+}
+
+@media (max-width: 768px) {
+  .recipeContainer {
+    width: 100%;
+    max-width: 20rem;
+  }
+  .recipeContainer img {
+    width: 20rem;
+  }
+  .backButtonDiv {
+    font-size: small;
+  }
+}
