@@ -12,7 +12,8 @@ function App() {
   return (
     <div className="App">
       {(location.pathname === "/home" ||
-        location.pathname === "/recipes/create") && <Nav />}
+        location.pathname === "/recipes/create" ||
+        location.pathname.includes("/recipes")) && <Nav />}
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/home" element={<Home />} />
