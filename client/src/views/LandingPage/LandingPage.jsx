@@ -6,16 +6,16 @@ const LandingPage = () => {
   return (
     <div className={style.principalContainer}>
       <div className={style.textContainer}>
-        <h1>Flavor Fusion</h1>
+        <h1>Fusion of Flavores</h1>
         <p>
           Welcome to our delicious world of recipes! This app is here to provide
           you with endless inspiration and ideas for your next meal. Explore our
           collection of recipes from around the world.
         </p>
+        <p>Individual project made by Greidy Peña.</p>
         <NavLink to="/home">
           <button className={style.buttonHome}>Let's get stared!</button>
         </NavLink>
-        <p>Individual project made by Greidy Peña</p>
       </div>
     </div>
   );
