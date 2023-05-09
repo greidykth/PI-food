@@ -1,0 +1,65 @@
+.notification {
+  position: absolute;
+  top: 60px;
+  right: 50px;
+  width: max-content;
+  padding: 20px 15px;
+  border-radius: 8px;
+  color: #f6f5f9;
+  transform: translateY(-30px);
+  opacity: 0;
+  visibility: hidden;
+  animation: fade-in 4s linear forwards;
+  border: 1px solid #ed714d;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px 0 #f9a68a5e;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 99;
+}
+
+.notification p {
+    font-size: 14px;
+    font-weight: bold;
+    color: gray;
+}
+
+.notificationProgress {
+  position: absolute;
+  left: 5px;
+  bottom: 5px;
+  width: calc(100% - 10px);
+  height: 3px;
+  transform: scalex(0);
+  transform-origin: left;
+  background-image: linear-gradient(to right, #ed714d, #0eb6c2);
+  border-radius: inherit;
+  animation: load 3s 0.25s linear forwards;
+  z-index: 99;
+}
+
+@keyframes fade-in {
+  5% {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes load {
+  to {
+    transform: scalex(1);
+  }
+}
+
+.success {
+    border: 2px solid #0dd775;
+}
+
+.error {
+    border: 2px solid #d02503;
+}
