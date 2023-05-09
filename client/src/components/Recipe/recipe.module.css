@@ -1,20 +1,65 @@
 .recipe {
-  border: 1px solid #ed714d;
-  padding: 10px;
-  width: 300px;
+  width: 350px;
   border-radius: 18px;
   text-align: center;
   transition: all 0.25s;
-  box-shadow: -1px 15px 30px -12px rgb(250, 171, 132);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: start;
+  align-items: start;
+}
+
+.divInfo{
+  display: flex;
+  flex-direction: column;
   margin-top: 1rem;
-  background-color: white;
 }
 
 .recipe img {
-  width: 300px;
+  width: 350px;
   object-fit: cover;
+}
+
+.divInfo h5{
+  margin-bottom: 0;
+  
+}
+
+.origin, .healthScore{
+  align-self: start;
+  margin-top: 0;
+}
+
+.healthScore{
+  margin-top: 1rem;
+  color: #0eb6c2;
+}
+
+.name {
+  text-align: left;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.divInfo a {
+  text-decoration: none;
+}
+
+.divDiets {
+  display: flex;
+  flex-direction: row;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.spanDiet {
+  border-radius: 1rem;
+  background-color: #f9d1b2;
+  padding-left: 0.6rem;
+  padding-right: 0.6rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  margin: 0.3rem;
+  font-size: small;
 }
