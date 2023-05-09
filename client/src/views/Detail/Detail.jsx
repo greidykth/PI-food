@@ -28,12 +28,6 @@ const Detail = () => {
   return (
     <div className={style.principalContainer}>
       <div className={style.container}>
-        <div className={style.backButtonDiv}>
-          <NavLink to="/home">
-            {" "}
-            <Back /> Back to home
-          </NavLink>
-        </div>
         <div className={style.recipeContainer}>
           {recipe.name ? (
             <div className={style.detailDiv}>
@@ -42,7 +36,7 @@ const Detail = () => {
                 <h3 className={style.healthScore}>
                   Health Score: {recipe.healthScore}
                 </h3>
-                <h4 className={style.id}>{recipe.createdOnDB ? "My recipe" : "Other recipe"}</h4>
+                <h4 className={style.origin}>{recipe.createdOnDB ? "My recipe" : "Other recipe"}</h4>
                 <h3 className={style.id}>ID {id}</h3>
                 <h2 className={style.name}>{recipe.name}</h2>
                 <h3 className={style.diets}>Diets:</h3>
@@ -74,6 +68,12 @@ const Detail = () => {
               </div>
             </>
           )}
+        </div>
+        <div className={style.backButtonDiv}>
+          <NavLink to="/home">
+            {" "}
+            <Back /> Back to home
+          </NavLink>
         </div>
       </div>
     </div>
