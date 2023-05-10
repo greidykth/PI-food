@@ -80,3 +80,13 @@
 .orderSelect {
   padding: 0 8px;
 }
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    padding: 0px 40px 20px 40px;
+  }
+  .originDietsContainer{
+    border-right: none;
+  }
+}
