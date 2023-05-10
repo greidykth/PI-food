@@ -11,21 +11,25 @@ export const PaginationRecipes = ({page, setPage, maxPage}) => {
     const nextPage = () => {
       setInput (parseInt(input) + 1);
       setPage (parseInt(page) + 1);
+      window.scrollTo(0, 0);
     };
   
     const previousPage = () => {
       setInput (parseInt(input) - 1);
       setPage (parseInt(page) - 1);
+      window.scrollTo(0, 0);
     };
 
     const firstPage = () => {
       setInput (1);
       setPage ( 1);
+      window.scrollTo(0, 0);
     };
 
     const lastPage = () => {
       setInput (maxPage);
       setPage (maxPage);
+      window.scrollTo(0, 0);
     };
   
     const onKeyDown = e => {
@@ -38,8 +42,10 @@ export const PaginationRecipes = ({page, setPage, maxPage}) => {
         ) {
           setPage (1);
           setInput (1);
+          window.scrollTo(0, 0);
         } else {
           setPage (parseInt (e.target.value));
+          window.scrollTo(0, 0);
         }
       }
     };
