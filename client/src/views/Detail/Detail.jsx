@@ -37,7 +37,6 @@ const Detail = () => {
                   Health Score: {recipe.healthScore}
                 </h3>
                 <h4 className={style.origin}>{recipe.createdOnDB ? "My recipe" : "Other recipe"}</h4>
-                <h3 className={style.id}>ID {id}</h3>
                 <h2 className={style.name}>{recipe.name}</h2>
                 <h3 className={style.diets}>Diets:</h3>
                 <div className={style.dietsSelectedContainer}>
