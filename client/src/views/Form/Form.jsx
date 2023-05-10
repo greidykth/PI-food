@@ -195,6 +195,13 @@ const Form = () => {
           procedure: "Please add at least one step",
         }));
       }
+      dispatch(
+        showNotification({
+          message: "All fileds are required",
+          type: "error",
+        })
+      );
+      window.scrollTo(0, 0);
     }
   };
 
