@@ -67,16 +67,21 @@ export default function rootReducer(state = initialState, { type, payload }) {
       //filter by diets
       let recipesTemporal = [];
       let recipesTemporal1 = [];
+      let atLeastOne = false;
       payload.diets.forEach(diet => {
-        if(diet.checked)
+        if(diet.checked){
+          atLeastOne = true;
           recipesTemporal = [...recipesTemporal, ...filteredRecipes.filter(recipe => recipe.diets.includes(diet.name))]
-      });
-      recipesTemporal.forEach(recipe => {
-        if (!recipesTemporal1.find((recipeTemporal) => recipeTemporal.id === recipe.id)) {
-          recipesTemporal1.push(recipe);
         }
-      })
-      filteredRecipes = [...recipesTemporal1];
+      });
+      if(atLeastOne){
+        recipesTemporal.forEach(recipe => {
+          if (!recipesTemporal1.find((recipeTemporal) => recipeTemporal.id === recipe.id)) {
+            recipesTemporal1.push(recipe);
+          }
+        })
+        filteredRecipes = [...recipesTemporal1];
+      }
 
       //order by name
       if (payload.orderName !== "DEFAULT") {
