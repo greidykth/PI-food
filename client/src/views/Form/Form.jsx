@@ -164,7 +164,7 @@ const Form = () => {
       setErrors((oldErrors) => ({ ...oldErrors, procedure: "" }));
 
       axios
-        .post("http://localhost:3001/recipes/", form)
+        .post(`${process.env.REACT_APP_API_URL}/recipes/`, form)
         .then((response) => {
           dispatch(
             showNotification({
