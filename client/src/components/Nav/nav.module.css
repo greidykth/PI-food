@@ -39,3 +39,22 @@
 .logoContainer img {
   max-height: 32px;
 }
+
+@media (max-width: 768px) {
+  .logoContainer img {
+    display: none;
+  }
+  .navigation h2 {
+    margin: 0 0 0 0.5rem;
+    color: #ed714d;
+    font-size: 18px;
+  }
+  .navigation {
+    flex-direction: column;
+    padding: 15px;
+  }
+  .navigation a {
+    margin-bottom: 0.5rem;
+    font-size: medium;
+  }
+}
